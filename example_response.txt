@@ -1,0 +1,111 @@
+{
+  "data": {
+    "id": 4606,
+    "name": "Arrachera (Skirt Steak)",
+    "description": "Arrachera is a traditional Mexican dish featuring marinated and grilled skirt steak. Known for its robust flavor and tender texture, it is commonly served sliced thin with tortillas and accompaniments.",
+    "difficulty": "medium",
+    "meal_type": "main",
+    "cuisine": "mexican",
+    "dietary_tags": [
+      "gluten_free",
+      "dairy_free",
+      "nut_free",
+      "halal",
+      "kosher"
+    ],
+    "servings": 2,
+    "prep_time": 15,
+    "cook_time": 10,
+    "calories_per_serving": 350,
+    "protein": 35,
+    "instructions": [
+      "Trim any excess fat and silver skin from the skirt steak.",
+      "In a bowl, mix olive oil, lime juice, minced garlic, chopped cilantro, ground cumin, salt, black pepper, and chili powder to create the marinade.",
+      "Place the skirt steak in a shallow dish and pour the marinade over it, ensuring the meat is well coated.",
+      "Cover and refrigerate the steak, allowing it to marinate for at least 2 hours or overnight for best flavor.",
+      "Preheat a grill or grill pan over high heat.",
+      "Remove the steak from the marinade and let excess drip off.",
+      "Grill the steak for about 3-5 minutes per side, depending on thickness, until medium-rare to medium doneness is reached.",
+      "Remove the steak from the grill and let it rest for 5 minutes to allow juices to redistribute.",
+      "Slice the steak thinly against the grain to maximize tenderness.",
+      "Serve with warmed tortillas, salsa, grilled onions, or your choice of sides."
+    ],
+    "ingredients": [
+      {
+        "id": 5,
+        "name": "Olive oil",
+        "category": "oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "id": 6,
+        "name": "Salt",
+        "category": "condiment",
+        "quantity": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "id": 7,
+        "name": "Black pepper",
+        "category": "condiment",
+        "quantity": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "id": 37,
+        "name": "Garlic",
+        "category": "vegetable",
+        "quantity": 3,
+        "unit": "clove",
+        "optional": false
+      },
+      {
+        "id": 38,
+        "name": "Cilantro",
+        "category": "herb",
+        "quantity": 0.5,
+        "unit": "bunch",
+        "optional": false
+      },
+      {
+        "id": 39,
+        "name": "Lime juice",
+        "category": "condiment",
+        "quantity": 3,
+        "unit": "tbsp",
+        "optional": false
+      },
+      {
+        "id": 58,
+        "name": "Chili powder",
+        "category": "spice",
+        "quantity": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "id": 59,
+        "name": "Cumin",
+        "category": "spice",
+        "quantity": 1,
+        "unit": "tsp",
+        "optional": false
+      },
+      {
+        "id": 202,
+        "name": "Skirt steak",
+        "category": "meat",
+        "quantity": 500,
+        "unit": "g",
+        "optional": false
+      }
+    ]
+  },
+  "meta": {
+    "language": "en"
+  }
+}
