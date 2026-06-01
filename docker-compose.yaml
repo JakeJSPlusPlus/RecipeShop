@@ -9,14 +9,27 @@ services:
     restart: unless-stopped
     ports:
       - "8000:8000"
+    networks:
+      - backend-network
+
 
   frontend:
     build:
       context: ./App/next-app
       dockerfile: Dockerfile
     container_name: frontend
+    env_file: .env.production
     restart: unless-stopped
     ports:
       - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - backend-network
+      - frontend-network
+
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge

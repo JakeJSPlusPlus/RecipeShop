@@ -12,6 +12,7 @@ export default function Home() {
     const [search_results, setSearchResults] = useState<Recipe[]>([])
     const [is_show_recipes, setIsShowRecipes] = useState<boolean>(false)
     const [selectedRecipeIndex, setSelectedRecipeIndex] = useState<number | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         console.log(search_results)
@@ -22,14 +23,15 @@ export default function Home() {
         const headers = new Headers()
         const body = JSON.stringify({difficulty, cuisine, name})
         headers.append("Content-Type", "application/json")
-        const response = await fetch("https://backend:8000/search", {
+        const response = await fetch("http://localhost:8000/search", {
             method: "POST",
             headers: headers,
             body: body
         })
         const data = await response.json()
         console.log(data.data)
-        if (data.data.length === 0) {
+        if (data.data?.length === 0) {
+            setError("No recipes found")
             alert("No recipes found")
             return
         }
@@ -38,9 +40,14 @@ export default function Home() {
         setIsShowRecipes(true)
     }
 
+    if (error) {
+        return <div className={"tex-red text-3xl"}>{error}</div>;
+    }
+
     return (
+
       <main className="flex w-full xs:w-1/2 items-center py-10 bg-white dark:bg-black">
-          {is_show_recipes ?
+          {!error ? is_show_recipes ?
               !selectedRecipeIndex ?
                   <Results items={search_results} setItemIndex={setSelectedRecipeIndex}/>
           :
@@ -71,6 +78,8 @@ export default function Home() {
               setName={setName}
               handleSubmit={handleSubmit}/>
 
+          :
+          <div className={"text-red-500 text-3xl"}>{error}</div>
           }
       </main>
   );

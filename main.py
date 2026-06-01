@@ -5,7 +5,9 @@ from pydantic import BaseModel
 import requests
 from urllib.parse import quote
 import os
+from dotenv import load_dotenv
 app = FastAPI()
+load_dotenv(dotenv_path=".env.production")
 
 origins = ["localhost",
            "127.0.0.1",
