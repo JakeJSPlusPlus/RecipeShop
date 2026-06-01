@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import requests
 from urllib.parse import quote
+import os
 app = FastAPI()
 
 origins = ["localhost",
@@ -25,7 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-RECIPE_API = "sk_live_UVCQN7ZHYqxkDS6M2QrH6b8GWDzrROgXPIeqgjnm3fd3863b"
+RECIPE_API = os.getenv("RECIPE_API")
 
 homePage = """
 <h1>Welcome to the Home Page</h1>

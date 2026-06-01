@@ -22,7 +22,7 @@ export default function Home() {
         const headers = new Headers()
         const body = JSON.stringify({difficulty, cuisine, name})
         headers.append("Content-Type", "application/json")
-        const response = await fetch("http://localhost:8000/search", {
+        const response = await fetch("https://backend:8000/search", {
             method: "POST",
             headers: headers,
             body: body
