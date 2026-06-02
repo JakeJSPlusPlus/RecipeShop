@@ -1,42 +1,24 @@
 "use client"
-import type {Ingredient} from "../types";
+import type {Ingredient, Recipe} from "../types";
+
 
 type RecipePageProps = {
-    id: number,
-    name: string,
-    description: string,
-    difficulty: string,
-    instructions: string[],
-    meal_type: string,
-    cook_time: number,
-    calories_per_serving: number,
-    protein: number,
-    ingredients: Ingredient[],
-    cuisine: string,
-    dietary_tags: string[],
-    servings: number,
-    prep_time: number,
+    recipes: Recipe,
+    backAction: () => void,
+
 }
 
 export default function RecipePage(
-    {
-        id,
-        name,
-        description,
-        difficulty,
-        instructions,
-        meal_type,
-        cuisine,
-        dietary_tags,
-        servings,
-        prep_time,
-        cook_time,
-        calories_per_serving,
-        protein,
-        ingredients
-    }: RecipePageProps){
+    {recipes, backAction}: RecipePageProps){
     return(
-        <div className={"flex w-full h-full items-center justify-center "}>
+        <div className={"flex w-full h-full items-center justify-center flex-col"}>
+            <div className={"flex w-full justify-start h-10 mb-10"}>
+                <button className={"bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full"}
+                        onClick={() => {backAction()}}
+                >
+                    Back
+                </button>
+            </div>
             <div className={"flex w-fit flex-row-reverse h-full border-2 border-amber-400 p-10"}>
                 {/*--------------------------------------------- Start Right side-------------------------------------------*/}
                 <div className={"flex flex-col"}>
@@ -44,13 +26,13 @@ export default function RecipePage(
 
                     <div className={"border-white border-2 px-2"}>
                         <div>
-                            {"Servings: " + servings} <br/>
-                            {"Prep time: " + prep_time + " min"} <br/>
-                            {"Cook time: " + cook_time + " min"} <br/>
-                            {"Calories: " + calories_per_serving} <br/>
-                            {"Protein: " + protein + " g"} <br/>
+                            {"Servings: " + recipes.servings} <br/>
+                            {"Prep time: " + recipes.prep_time + " min"} <br/>
+                            {"Cook time: " + recipes.cook_time + " min"} <br/>
+                            {"Calories: " + recipes.calories_per_serving} <br/>
+                            {"Protein: " + recipes.protein + " g"} <br/>
                         </div>
-                        <div>{dietary_tags.map((item) => (
+                        <div>{recipes.dietary_tags.map((item) => (
                             <div key={item} className={"flex w-full"}>
                                 {item.replace('_', " ")}
                             </div>
@@ -60,7 +42,7 @@ export default function RecipePage(
                     <br />
                     <div className={"w-full justify-center text-3xl text-center"}>{"Ingredients"}</div> {/* Ingredients*/}
                     <div className={"flex w-50 flex-col justify-center border-2 border-white "}>
-                        {ingredients.map((ingredient, index) => (
+                        {recipes.ingredients.map((ingredient, index) => (
                             <div key={index} className={"flex w-full justify-center pl-2"}>
                                 <Ingredient {...ingredient}/>
                             </div>
@@ -72,13 +54,13 @@ export default function RecipePage(
                 </div>
                 {/* ---------------------------------------------Sart Left side-------------------------------------*/}
                 <div className={"flex w-full flex-col px-5"}>
-                    <div className={"flex w-full justify-center text-5xl "}>{name}</div>  {/* Food name*/}
+                    <div className={"flex w-full justify-center text-5xl "}>{recipes.name}</div>  {/* Food name*/}
                     <br />
-                    <div className={"w-full justify-center text-md italic"}>{description}</div>    {/* Description*/}
+                    <div className={"w-full justify-center text-md italic"}>{recipes.description}</div>    {/* Description*/}
                     <br/>
                     <div className={"border-rose-400 border-2 px-2"}>
                         <div className={"flex justify-center w-full text-4xl "}>{"Instructions"}</div> {/* Instructions*/}
-                        <div>{instructions.map((item, index) => (
+                        <div>{recipes.instructions.map((item, index) => (
                             <div key={index} className={"flex w-full justify-start"}>
                                 {index + 1}. {item}
                                 <br/>

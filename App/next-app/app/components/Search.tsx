@@ -1,59 +1,92 @@
 "use client"
+import Image from 'next/image'
+import {FaSearch} from "react-icons/fa";
+import {RecipeShopLogo} from "@/app/components/RecipeShopLogo";
+import {AdvancedOptions} from "@/app/components/AdvancedOptions";
+import {useState} from "react";
 
 type SearchProps = {
+    //search bar value
+    name: string,
+    setNameAction: (name: string) => void,
+    //advanced options values
     difficulty: string,
     cuisine: string,
-    name: string,
-    setDifficulty: (difficulty: string) => void,
-    setCuisine: (cuisine: string) => void,
-    setName: (name: string) => void,
-    handleSubmit: () => void,
+    dietary_tag: string,
+    meal_type: string,
+    //advance option dispatch
+    setDifficultyAction: (difficulty: string) => void,
+    setCuisineAction: (cuisine: string) => void,
+    setDietaryTagAction: (dietary_tag: string) => void,
+    setMealTypeAction: (meal_type: string) => void,
+    //submit action
+    handleSubmitAction: () => void,
 }
 
 export default function Search(
     {
         difficulty,
-        setDifficulty,
-        setCuisine,
-        setName,
-        handleSubmit,
+        cuisine,
+        dietary_tag,
+        meal_type,
+        setDifficultyAction,
+        setCuisineAction,
+        setDietaryTagAction,
+        setMealTypeAction,
+        setNameAction,
+        handleSubmitAction,
     }: SearchProps) {
+    const [isShowAdvancedOptions, setIsShowAdvancedOptions] = useState<boolean>(false)
+
     return (
         <>
             <div className={"block flex-col w-full h-full "}>
-                <div
-                    className={"grid my-2 items-center gap-y-2 gap-x-3 grid-cols-[auto_1fr] mx-auto w-full max-w-125"}>
-                    <label htmlFor="name" className="flex justify-end dark:text-white">Name</label>
-                    <input type="text" id="name"
-                           className="bg-white block w-full rounded-md border-0 text-black py-0.5 px-1 placeholder:text-gray-500"
-                           placeholder="Name"
-                           onChange={(e) => setName(e.currentTarget.value)}/>
-                    <label htmlFor="difficulty" className="flex justify-end dark:text-white">Difficulty</label>
-                    <select
-                        style={{color: (difficulty === "") ? "#6a7282" : "black"}}
-                        id="Difficulty"
-                        onChange={(e) => setDifficulty(e.currentTarget.value)}
-                        className="bg-white block w-full rounded-md border-0 py-0.5">
-                        <option className={"text-gray-500"} value={""}>--Select Option--</option>
-                        <option className={"text-black"} value={"all"}>All</option>
-                        <option className={"text-black"} value={"easy"}>Easy</option>
-                        <option className={"text-black"} value={"medium"}>Medium</option>
-                        <option className={"text-black"} value={"hard"}>Hard</option>
-                    </select>
-                    <label htmlFor="cuisine" className="flex justify-end dark:text-white">Cuisine</label>
-                    <input type="text" id="cuisine"
-                           className="bg-white block w-full rounded-md border-0 text-black py-0.5 px-1 placeholder:text-gray-500"
-                           placeholder="Cuisine"
-                           onChange={(e) => setCuisine(e.currentTarget.value)}/>
-                    <div></div>
-                    <div className={"flex w-full justify-end"}>
-                        <button
-                            className={"flex bg-amber-400 w-fit hover:bg-amber-500 text-white font-bold py-2 px-4 rounded"}
-                            onClick={handleSubmit}
-                        >Submit
-                        </button>
+                {/*============================== Search Bar ==============================*/}
+                <div className={"flex justify-center w-full "}>
+                    <div className={"flex justify-center w-1/2 flex-col"}>
+                        <RecipeShopLogo/>
+                        <div className={"col-span-1"}></div>
+                        <div className={"flex justify-center w-full h-13 mb-10"}>
+                            <input type="text" id="name"
+                                   autoComplete={"off"}
+                                   className="bg-white block w-full rounded-3xl border-0 text-black py-0.5 px-3 placeholder:text-gray-500"
+                                   placeholder="Name"
+                                   onChange={(e) => setNameAction(e.currentTarget.value)}
+                            />
+                            <div
+                                className={"relative right-12 top-0 bg-emerald-500 rounded-4xl w-11 my-1 flex justify-center items-center hover:cursor-pointer"}
+                                onClick={handleSubmitAction}
+                            >
+                                <FaSearch/>
+                            </div>
+                        </div>
+                        <div className={"flex justify-center w-full"}>
+                            <button
+                                onClick={() => {setIsShowAdvancedOptions(true)}}
+                                className={"underline text-amber-500 rounded-4xl w-fit h-fit flex justify-center items-center hover:cursor-pointer"}>
+                                Advanced Search
+                            </button>
+                        </div>
                     </div>
+
                 </div>
+
+                {/*============================== Advanced Options ==============================*/}
+                {isShowAdvancedOptions && <div className={"flex absolute w-full h-full justify-center items-center top-0 left-0"}>
+                    <AdvancedOptions
+                        cuisine={cuisine}
+                        dietary_tag={dietary_tag}
+                        meal_type={meal_type}
+                        difficulty={difficulty}
+                        setDifficultyAction={setDifficultyAction}
+                        setCuisineAction={setCuisineAction}
+                        setDietaryTagAction={setDietaryTagAction}
+                        setMealTypeAction={setMealTypeAction}
+                        setSaveAction={() => {
+                            setIsShowAdvancedOptions(false)
+                        }}
+                    />
+                </div>}
             </div>
         </>
     )

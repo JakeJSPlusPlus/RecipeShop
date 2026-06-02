@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
 import requests
 from urllib.parse import quote
@@ -26,6 +26,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 RECIPE_API = os.getenv("RECIPE_API")
@@ -51,20 +52,21 @@ async def api():
     return {"endpoints": ["/search", "/favorites", "/discover"]}
 
 @app.post("/search")
-async def search(prams: SearchParams):
+async def search(params: SearchParams):
+
     build_url = "https://recipeapi.io/api/v1/recipes"
-    if prams.id:
-        build_url += f"/{prams.id}"
+    if params.id:
+        build_url += f"/{params.id}"
     else:
         build_url += "?"
-        if prams.difficulty:
-            build_url += f"difficulty={prams.difficulty}&"
-        if prams.name:
-            build_url += f"search={prams.name}&"
-        if prams.ingredients:
-            build_url += f"ingredients={prams.ingredients}&"
-        if prams.cuisine:
-            build_url += f"cuisine={prams.cuisine}&"
+        if params.difficulty:
+            build_url += f"difficulty={params.difficulty}&"
+        if params.name:
+            build_url += f"search={params.name}&"
+        if params.ingredients:
+            build_url += f"ingredients={params.ingredients}&"
+        if params.cuisine:
+            build_url += f"cuisine={params.cuisine}&"
 
     encoded_url = quote(build_url, safe="/:=?&")
     print(encoded_url)
@@ -73,26 +75,8 @@ async def search(prams: SearchParams):
         headers={"Authorization": f"Bearer {RECIPE_API}"}
     ).json()
     print(response)
-    return response
 
-@app.post("/details/{rec_id}")
-async def details(rec_id:int, servings:float | None = 2.0):
-    response = requests.get(
-        f"https://recipeapi.io/api/v1/recipes/{rec_id}",
-        headers={"Authorization": f"Bearer {RECIPE_API}"}
-    ).json()["data"]
-
-    if servings and servings > 0:
-        initial_servings = float(response["servings"])
-        response["servings"] = servings
-        multiplier = servings / initial_servings
-        print(f"initial: {initial_servings} preferred: {servings} multiplier: {multiplier}")
-        for ingredient in response["ingredients"]:
-            print(f"{ingredient["name"]} initial: ", ingredient["quantity"])
-            ingredient["quantity"] = round(ingredient["quantity"] * multiplier, 2)
-            print(f"{ingredient["name"]} final: ", ingredient["quantity"])
-
-    return response
+    return JSONResponse(content=response, status_code=200, headers={"Content-Type": "application/json"})
 
 @app.get("/favorites")
 async def favorites():

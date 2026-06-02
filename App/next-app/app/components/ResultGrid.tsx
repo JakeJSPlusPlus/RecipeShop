@@ -4,12 +4,20 @@ import {MdSkipNext, MdSkipPrevious} from "react-icons/md";
 type ResultsProps = {
     items: Recipe[],
     setItemIndex: (index:number) => void,
+    backAction: () => void,
 }
 
-export default function Results({items, setItemIndex} : ResultsProps) {
+export default function Results({items, setItemIndex, backAction} : ResultsProps) {
     console.log()
     return (
         <div className={"flex w-full h-full items-center justify-center flex-col"}>
+            <div className={"flex w-full justify-start h-10 mb-10"}>
+                <button className={"bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full"}
+                        onClick={ backAction}
+                >
+                    Back
+                </button>
+            </div>
             <div className={"grid rounded grid-cols-3 w-full h-full border-2 border-amber-400 p-10"}>
                 {items.map((item, index) => (
                     <div
