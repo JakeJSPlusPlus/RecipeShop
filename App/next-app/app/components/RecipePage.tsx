@@ -34,7 +34,11 @@ export default function RecipePage(
                         </div>
                         <div>{recipes.dietary_tags.map((item) => (
                             <div key={item} className={"flex w-full"}>
-                                {item.replace('_', " ")}
+                                {item.
+                                replaceAll('_', " ")
+                                    .split(" ")
+                                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                    .join(" ")}
                             </div>
                         ))}
                         </div>
