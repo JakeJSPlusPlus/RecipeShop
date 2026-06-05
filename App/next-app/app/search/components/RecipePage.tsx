@@ -1,5 +1,5 @@
 "use client"
-import type {Ingredient, Recipe} from "../types";
+import type {Ingredient, Recipe} from "@/app/types";
 
 
 type RecipePageProps = {

@@ -1,4 +1,4 @@
-import type {Recipe} from "../types";
+import type {Recipe} from "@/app/types";
 import {MdSkipNext, MdSkipPrevious} from "react-icons/md";
 
 type ResultsProps = {
