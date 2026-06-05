@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {ClerkProvider, Show, UserButton} from "@clerk/nextjs"
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +30,32 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full min-w-full flex flex-col">
-          <div className="block mx-10 my-10 sm:px-20 xl:px-40">
+      <ClerkProvider>
+        <header className={"h-15 w-full flex justify-end items-center px-10"}>
+          <Show when={"signed-out"}>
+            <Link href={"/sign-up"}>
+              <button className={"bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 mx-4 rounded-full"}>
+                Sign Up
+              </button>
+            </Link>
+              <Link href={"/sign-in"}>
+                <button className={"bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full"}>
+                  Sign In
+                </button>
+              </Link>
+
+          </Show>
+          <Show when={"signed-in"}>
+            <UserButton />
+          </Show>
+        </header>
+        <div className="block mx-10 my-10 sm:px-20 xl:px-40">
             <div className={"flex w-full h-full p-3 items-center justify-center "}>
+
               {children}
             </div>
           </div>
+      </ClerkProvider>
         </body>
     </html>
   );

@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image'
 import {FaSearch} from "react-icons/fa";
-import {RecipeShopLogo} from "@/app/components/RecipeShopLogo";
-import {AdvancedOptions} from "@/app/components/AdvancedOptions";
+import {RecipeShopLogo} from "./RecipeShopLogo";
+import {AdvancedOptions} from "./AdvancedOptions";
 import {useState} from "react";
 
 type SearchProps = {
