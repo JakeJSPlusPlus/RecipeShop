@@ -3,8 +3,10 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel
     restart: unless-stopped
-    env_file: .env.production
-    command: tunnel --no-autoupdate run --token $CLOUDFLARE_TUNNEL_TOKEN
+    command: tunnel --no-autoupdate run --token "${CLOUDFLARE_TUNNEL_TOKEN}"
+    depends_on:
+      - backend
+      - frontend
     networks:
       - tunnel-network
 
@@ -14,7 +16,7 @@ services:
       dockerfile: Dockerfile.backend
     container_name: backend
     env_file:
-      - .env
+      - .env.production
     restart: unless-stopped
     ports:
       - "8000:8000"
