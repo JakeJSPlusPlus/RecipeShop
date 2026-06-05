@@ -9,7 +9,7 @@ import {SignUpForm} from "@/app/sign-up/[[...sign-up]]/components/SignUpForm";
 export default function Page() {
 
     return (
-        <div className="w-[330px] rounded-xl bg-[rgba(17,24,39,1)] border-[#56E39F] border-2 p-8 text-[rgba(243,244,246,1)] md:w-[400px]">
+        <div className="w-[330px] rounded-xl bg-[rgba(17,24,39,1)] border-amber-700 border-2 p-8 text-[rgba(243,244,246,1)] md:w-[400px]">
             <p className=" text-center text-2xl font-bold leading-8">Sign Up</p>
             <div className="flex w-full flex-col gap-1 leading-5 text-sm items-center text-[rgba(156,163,175,1)] py-4">
                 <SignUpForm  />
@@ -25,7 +25,7 @@ export default function Page() {
             </div>
             <p className="text-center text-xs text-[rgba(156,163,175,1)]">
                 {"Already have an account? "}
-                <span className="hover:decoration-[rgba(167,139,250,1)] font-semibold underline hover:cursor-pointer leading-4">
+                <span className="hover:decoration-amber-500 font-semibold underline hover:cursor-pointer leading-4">
           <Link href={"/sign-in"}>{"Sign In"}</Link>
         </span>
             </p>

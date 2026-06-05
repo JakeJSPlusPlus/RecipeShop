@@ -111,7 +111,7 @@ export default function Page() {
                                 {"Code"}
                             </label>
                             <input
-                                className="w-full rounded-md border border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                                className="w-full rounded-md border border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:accent-amber-500"
                                 type={"code"}
                                 value={code}
                                 onChange={(e) => setCode(e.target.value)}
@@ -121,7 +121,7 @@ export default function Page() {
                             />
                         </div>
                         <button
-                            className="block w-full bg-[rgba(167,139,250,1)] p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
+                            className="block w-full bg-amber-500 p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
                             type="submit"
                             disabled={fetchStatus === "fetching"}
                         >
@@ -141,7 +141,7 @@ export default function Page() {
     }
 
     return (
-        <div className="w-[330px] rounded-xl bg-[rgba(17,24,39,1)] border-[#56E39F] border-2 p-8 text-[rgba(243,244,246,1)] md:w-[400px]">
+        <div className="w-[330px] rounded-xl bg-[rgba(17,24,39,1)] border-amber-700 border-2 p-8 text-[rgba(243,244,246,1)] md:w-[400px]">
             <p className=" text-center text-2xl font-bold leading-8">Sign In</p>
             <div className="flex w-full flex-col gap-1 leading-5 text-sm items-center text-[rgba(156,163,175,1)] py-4">
                 <form className="my-1 w-full md:w-4/5 " onSubmit={handleSubmit}>
@@ -156,7 +156,7 @@ export default function Page() {
                                 {"Email"}
                             </label>
                             <input
-                                className="w-full rounded-md border border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                                className="w-full rounded-md border border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                                 type={"email"}
                                 value={emailAddress}
                                 onChange={(e) => setEmailAddress(e.currentTarget.value)}
@@ -173,7 +173,7 @@ export default function Page() {
                                 {"Password"}
                             </label>
                             <input
-                                className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                                className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                                 type={"text"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -191,7 +191,7 @@ export default function Page() {
                     <button
                         type="submit"
                         disabled={fetchStatus === "fetching"}
-                        className="block w-full mt-6 text-white bg-[rgba(167,139,250,1)] p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
+                        className="block w-full mt-6 text-white bg-amber-500 p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
                     >
                         {"Sign In"}
                     </button>

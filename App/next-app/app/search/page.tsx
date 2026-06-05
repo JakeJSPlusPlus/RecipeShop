@@ -49,7 +49,7 @@ export default function Home() {
         const body = JSON.stringify({difficulty, name, cuisine, dietary_tag, meal_type, per_page, page})
 
         try {
-            const response = await fetch((API_URL ?? "http://localhost:8000") + "/search", {
+            const response = await fetch((API_URL ?? "https://api.scale-proof.com") + "/search", {
                 method: "POST",
                 headers: headers,
                 body: body,

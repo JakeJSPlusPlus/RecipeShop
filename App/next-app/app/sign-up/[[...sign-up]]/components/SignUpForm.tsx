@@ -110,7 +110,7 @@ export function SignUpForm() {
                                 {"Code"}
                             </label>
                             <input
-                                className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                                className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                                 type={"code"}
                                 id={"code"}
                                 name={"code"}
@@ -118,7 +118,7 @@ export function SignUpForm() {
                             />
                         </div>
                         <button
-                            className="block mb-4 w-full bg-[rgba(167,139,250,1)] p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
+                            className="block mb-4 w-full bg-amber-500 p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
                             type="submit"
                             disabled={fetchStatus === "fetching"}
                         >
@@ -160,7 +160,7 @@ export function SignUpForm() {
                             {"Email"}
                         </label>
                         <input
-                            className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                            className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                             type={"email"}
                             id={"email"}
                             name={"email"}
@@ -175,7 +175,7 @@ export function SignUpForm() {
                             {"Screen name"}
                         </label>
                         <input
-                            className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                            className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                             type={"text"}
                             id={"screenName"}
                             name={"screenName"}
@@ -190,7 +190,7 @@ export function SignUpForm() {
                             {"Password"}
                         </label>
                         <input
-                            className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                            className="w-full rounded-md border-1 border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                             type={"text"}
                             id={"password"}
                             name={"password"}
@@ -206,7 +206,7 @@ export function SignUpForm() {
                             {"Confirm Password"}
                         </label>
                         <input
-                            className="w-full rounded-md border border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-[rgba(167,139,250,1)]"
+                            className="w-full rounded-md border border-solid border-[rgba(55,65,81,1)] outline-0 bg-[rgba(17,24,39,1)] py-3 px-4 text-[rgba(243,244,246,1)] focus:border-amber-500"
                             type={"text"}
                             id={"passwordConfirm"}
                             name={"passwordConfirm"}
@@ -218,13 +218,13 @@ export function SignUpForm() {
                 <button
                     type="submit"
                     disabled={fetchStatus === "fetching"}
-                    className="block w-full mt-6 text-white bg-[rgba(167,139,250,1)] p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
+                    className="block w-full mt-6 text-white bg-amber-500 p-3 text-center text-[rgba(17, 24, 39, 1)] border-0 rounded-md font-semibold hover:cursor-pointer"
                 >
                     {fetchStatus === "fetching" ? (
                         <div className="w-full gap-x-2 flex justify-center items-center">
-                            <div className="w-3 h-3 bg-[#d991c2] rounded-full animate-bounce" />
-                            <div className="w-3 h-3 bg-[#9869b8] rounded-full animate-bounce" />
-                            <div className="w-3 h-3 bg-[#6756cc] rounded-full animate-bounce" />
+                            <div className="w-3 h-3 bg-amber-500 rounded-full animate-bounce" />
+                            <div className="w-3 h-3 bg-amber-100 rounded-full animate-bounce" />
+                            <div className="w-3 h-3 bg-red-400 rounded-full animate-bounce" />
                         </div>
                     ) : (
                         "Sign Up"
